@@ -1,9 +1,9 @@
 let mongoose = require("mongoose");
 mongoose.pluralize(null);
 
-let requestSchema = mongoose.Schema({
+let productSchema = mongoose.Schema({
     _id: Number,
-    productId: Number,
+    name: String,
     price: Number,
     quantity: Number
 });
