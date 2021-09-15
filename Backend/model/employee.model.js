@@ -1,14 +1,13 @@
-let mongoose = require("mongoose");
-mongoose.pluralize(null);
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
-let employeeSchema = mongoose.Schema({
-    _id: {type: Number},
-    firstName: {type: String},
-    lastName: {type: String},
-    username: {type: String},
-    password: {type: String, default: "defaultPass"}
+let schema = mongoose.Schema;
+
+let employee = new schema({
+    firstName:String,
+    lastName:String,
+    email_address:String,
+    e_password:String,          //must be auto-generated when employee is first added by the admin
+    first_login:Boolean
 });
-
-let employeeModel = mongoose.model("Employee", employeeSchema);
-
-module.exports = employeeModel;
+module.exports = mongoose.model('Employee',employee);
