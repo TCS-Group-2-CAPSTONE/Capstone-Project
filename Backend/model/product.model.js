@@ -3,9 +3,10 @@ mongoose.pluralize(null);
 
 let productSchema = mongoose.Schema({
     
-    name: String,
-    price: Number,
-    quantity: Number
+    name: {type: String, unique: true, required: true},
+    price: {type: Number, required: true},
+    quantity: {type: Number, required: true},
+    url: {type: String, required: true}
 });
 
 let productModel = mongoose.model("Product", productSchema);

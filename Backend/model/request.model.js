@@ -4,8 +4,8 @@ mongoose.pluralize(null);
 let requestSchema = mongoose.Schema({
     _id: {type: Number},
     productsRequested: {type: [{
-        name: {type: String},
-        action: {type: String},
+        name: {type: String, required: true},
+        action: {type: String, required: true},
         quantity: {type: Number}
     }]}
 });
