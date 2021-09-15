@@ -1,0 +1,20 @@
+<div>
+    <br>
+    <h2 class="centerText">Welcome {{userName}}</h2>
+    <br>
+    <br>
+    <hr>
+    <div class = "container centerVertically">
+        <div class="row align-items-center">
+                <div class="d-grid gap-2 col-2 mx-auto border" style="padding: 10px">
+                    <button class="btn employee" [routerLink]="['send-request']">Send Request</button>
+                    <button class="btn employee" [routerLink]="['update-order-status']">Update Order Status</button>
+                    <button class="btn employee" [routerLink]="['unlock-users']">Unlock Users</button>
+                    <button class="btn employee" [routerLink]="['edit-profile']">Edit Profile</button>
+                    <button class="btn employee" [routerLink]="['']">Logout</button>
+                </div>
+
+            <div  class="col-10 centerHorizontally"><router-outlet></router-outlet></div>
+        </div>  
+    </div>
+</div>

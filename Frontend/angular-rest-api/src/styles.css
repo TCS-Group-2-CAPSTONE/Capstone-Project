@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+.centerHorizontally {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+  
+  .centerVertically {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .centerText {
+    text-align: center;
+  }
+
+  .right {
+      float: right;
+  }
+
+  .left {
+    float: left;
+}
+
+.admin{
+    background-color: darkorange;
+    color: white;
+}
+
+.user{
+    background-color: #7393B3;
+    color: white;
+}
+
+.employee{
+    background-color: black;
+    color: white;
+}
+
+.box{
+  padding:75px 200px;
+}

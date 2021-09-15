@@ -1,0 +1,23 @@
+<div>
+    <br>
+    <h2 class="centerText">Welcome {{userName}}</h2>
+    <br>
+    <br>
+    <hr>
+    <div class = "container centerVertically">
+        <div class="row align-items-center">
+                <div class="d-grid gap-2 col-2 mx-auto border" style="padding: 10px">
+                    <button class="btn user" [routerLink]="['select-items']">Select Items</button>
+                    <button class="btn user" [routerLink]="['delete-items']">Delete Items</button>
+                    <button class="btn user" [routerLink]="['view-items']">View Items</button>
+                    <button class="btn user" [routerLink]="['checkout']">Checkout</button>
+                    <button class="btn user" [routerLink]="['order-status']">Order Status</button>
+                    <button class="btn user" [routerLink]="['edit-profile']">Edit Profile</button>
+                    <button class="btn user" [routerLink]="['funds']">Funds</button>
+                    <button class="btn user" [routerLink]="['']">Logout</button>
+                </div>
+
+            <div  class="col-10 centerHorizontally"><router-outlet></router-outlet></div>
+        </div>  
+    </div>
+</div>
