@@ -2,12 +2,14 @@ let mongoose = require("mongoose");
 mongoose.pluralize(null);
 
 let requestSchema = mongoose.Schema({
-    _id: Number,
-    productId: Number,
-    price: Number,
-    quantity: Number
+    _id: {type: Number},
+    productsRequested: {type: [{
+        name: {type: String},
+        action: {type: String},
+        quantity: {type: Number}
+    }]}
 });
 
-let productModel = mongoose.model("Product", productSchema);
+let requestModel = mongoose.model("Request", requestSchema);
 
-module.exports = productModel;
+module.exports = requestModel;
