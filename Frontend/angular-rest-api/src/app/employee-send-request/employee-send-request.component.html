@@ -1,1 +1,14 @@
-<p>employee-send-request works!</p>
+<div >
+
+    <div >
+        <h2>Send a request to the Admin</h2>
+        <br>
+        <br>
+    <form [formGroup]="requestRef" (ngSubmit)="addRequest()">
+        <textarea class="form-control" formControlName="request" placeholder="i.e., update the quantity of a product, etc."></textarea>
+        <br>
+        <button type="submit" class="btn employee">Send</button>
+    </form>
+      <br>
+    </div>
+</div>
