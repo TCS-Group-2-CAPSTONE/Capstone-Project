@@ -8,6 +8,7 @@ let userRouter = require("./router/user.router");
 let productRouter = require("./router/product.router");
 let adminRouter = require("./router/admin.router");
 let requestRouter = require("./router/request.router");
+let employeeRouter = require("./router/employee.router"); //A
 
 // create the reference of express 
 let app = express();
@@ -44,6 +45,8 @@ app.use("/product",productRouter);
 app.use("/admin", adminRouter);
 
 app.use("/request", requestRouter);
+
+app.use("/employee",employeeRouter); //A
 
 // app.use("/api/order",routerOrder);
 // app.use("/api/login",routerLogin);
