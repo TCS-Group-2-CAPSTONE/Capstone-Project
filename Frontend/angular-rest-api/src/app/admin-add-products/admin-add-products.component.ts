@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-admin-add-products',
@@ -10,15 +11,21 @@ export class AdminAddProductsComponent implements OnInit {
   productRef = new FormGroup({
     name:new FormControl(),
     price:new FormControl(),
-    qty:new FormControl()
+    quantity:new FormControl(),
+    url:new FormControl()
   });
-  constructor() { }
+  msg?:string;
+  constructor(public adminSer:AdminService) { }
 
   ngOnInit(): void {
   }
+
   addProduct(){
     let product = this.productRef.value;
 
+    this.adminSer.addProduct(product).subscribe(result=> {
+      this.msg = result;
+    })
     
   }
 }

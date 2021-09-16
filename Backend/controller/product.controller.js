@@ -3,6 +3,7 @@ let productModel = require("../model/product.model");
 
 let addProduct = (request, response) => {
     let product = request.body;
+    console.log(product);
     productModel.insertMany(product, (error, result)=> {
         if(!error) {
             response.send(`Added product ${product.name} successfully`);
@@ -27,9 +28,9 @@ let deleteProduct = (request, response) => {
 
 let updateProduct = (request, response) => {
     let product = request.body;
-    productModel.updateOne({name: product.name}, {$set: {price: product.price, quantity: product.quantity}},
+    productModel.updateOne({name: product.name}, {$set: {price: product.price, quantity: product.quantity, url: product.url}},
         (error, result) =>{
-            if (result.modifiedCount == 1) {
+            if (!error && result.modifiedCount > 0) {
                 response.send(`updated product ${product.name} successfully`);
             }
             else {

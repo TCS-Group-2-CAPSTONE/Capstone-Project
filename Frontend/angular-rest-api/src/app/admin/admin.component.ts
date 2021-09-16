@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +14,7 @@ export class AdminComponent implements OnInit {
     username:new FormControl(),
     password:new FormControl()
   });
-  constructor(public router:Router) { }
+  constructor(public router:Router, public adminSer:AdminService) { }
 
   ngOnInit(): void {
   }
@@ -21,12 +22,15 @@ export class AdminComponent implements OnInit {
   checkAdmin(){
     let login = this.loginRef.value;
 
-    if (login.username == 'Raj' && login.password == '1234' ){
-      this.router.navigate(['admin-dashboard', login.username]);
-    }
-    else {
-      this.msg = 'Invalid credentials. Please try again.'
-    }
+    this.adminSer.checkLoginDetails(login).subscribe(result=>{
+      
+      if (result=="found"){
+        this.router.navigate(['admin-dashboard', login.username]);
+      }
+      else {
+        this.msg = 'Invalid credentials. Please try again.'
+      }
+    });
   }
 
 }

@@ -1,1 +1,21 @@
-<p>admin-delete-products works!</p>
+<div>
+
+    <div>
+        <h2>Delete a product</h2>
+        <br>
+        <br>
+        <form [formGroup]="productRef" (ngSubmit)="deleteProduct()">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="name" required>
+                </div>
+            </div>
+            <button type="submit" class="btn admin">Delete</button>
+
+        </form>
+        <br>
+        {{msg}}
+
+    </div>
+</div>

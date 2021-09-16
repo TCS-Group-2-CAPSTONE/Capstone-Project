@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-admin-delete-products',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDeleteProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public adminSer:AdminService) { }
+
+  productRef = new FormGroup({
+    name: new FormControl()
+  })
+
+  msg?:string;
 
   ngOnInit(): void {
   }
 
+  deleteProduct() {
+    let product = this.productRef.value;
+    this.adminSer.deleteProduct(product).subscribe(result=>{
+      this.msg = result;
+    })
+  }
 }

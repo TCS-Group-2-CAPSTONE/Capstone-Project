@@ -29,13 +29,14 @@ let addEmployee = (request, response) => {
 }
 
 let deleteEmployee = (request, response) => {
-    let employeeId = request.params.employeeId;
-    employeeModel.deleteOne({_id: employeeId}, (error, result) => {
+    let employeeEmail = request.params.employeeEmail;
+    
+    employeeModel.deleteOne({email_address: employeeEmail}, (error, result) => {
         if (result.deletedCount == 1) {
-            response.send(`employee number ${employeeId} has been deleted`);
+            response.send(`employee with email ${employeeEmail} has been deleted`);
         }
         else {
-            response.send(`employee ${employeeId} has not been deleted`);
+            response.send(`employee with email ${employeeEmail} has not been deleted`);
         }
     })
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AdminService } from '../admin.service';
 
 
 @Component({
@@ -9,17 +10,23 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AdminAddEmployeeComponent implements OnInit {
   employeeRef = new FormGroup({
-    fname:new FormControl(),
-    lname:new FormControl(),
-    email:new FormControl()
+    firstName: new FormControl(),
+    lastName: new FormControl(),
+    email_address: new FormControl()
   });
-  constructor() { }
+
+  msg?: string;
+
+  constructor(public adminSer: AdminService) { }
 
   ngOnInit(): void {
   }
-  addEmployee(){
-    let product = this.employeeRef.value;
+  addEmployee() {
+    let employee = this.employeeRef.value;
+    this.adminSer.addEmployee(employee).subscribe(result => {
+      this.msg = result;
+    })
 
-    
+
   }
 }
