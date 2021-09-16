@@ -4,8 +4,10 @@ let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
 let cors = require("cors");
 //let routerProduct = require("./router/product.router");
-let routerUser = require("./router/user.router");
-let routeProduct = require("./router/product.router");
+let userRouter = require("./router/user.router");
+let productRouter = require("./router/product.router");
+let adminRouter = require("./router/admin.router");
+let requestRouter = require("./router/request.router");
 
 // create the reference of express 
 let app = express();
@@ -15,7 +17,8 @@ app.use(cors());
 app.use(bodyParser.json())
 
 //url database   
-let url = "mongodb://localhost:27017/groceryCap"   
+//let url = "mongodb://localhost:27017/groceryCap"  
+let url = "mongodb://localhost:27017/tcsmean"; 
 
 // connect the database 
 mongoose.connect(url).then(res=>console.log("connected")).catch(error=>console.log(error));
@@ -34,8 +37,13 @@ mongoose.connect(url).then(res=>console.log("connected")).catch(error=>console.l
 //http://localhost:9090/api/user/userId    :get userId
 // app.use("/api/product",routerProduct);
   
-app.use("/api/user",routerUser);
-app.use("/api/product",routeProduct);
+app.use("/api/user",userRouter);
+
+app.use("/product",productRouter);
+
+app.use("/admin", adminRouter);
+
+app.use("/request", requestRouter);
 
 // app.use("/api/order",routerOrder);
 // app.use("/api/login",routerLogin);
