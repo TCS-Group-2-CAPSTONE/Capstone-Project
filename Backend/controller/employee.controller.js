@@ -1,100 +1,68 @@
-const employee = require("../models/employeeModel");
-const empConfig = require("../config/employeeConfig");
-const validationHandler = require("../validators/validationHandler");
-const jwt = require("jwt-simple");
-let getAll = async (req, res, next) => {
-  try {
-    let emps = await employee.find();
-    res.send(emps);
-  } catch (err) {
-    next(err);
-  }
-};
-let signIn = async (req, res, next) => {
-  try {
-    let email_address = req.body.email;
-    let pass = req.body.pass;
+const employee = require("../model/employee.model");
+const requestModel = require("../model/request.model");
 
-    let emp = await employee.findOne({ email_address });
-
-    if (!emp) {
-      const error = new Error("Wrong credentials: not a valid user");
-      error.statusCode = 401;
-      throw error;
-    }
-
-    if(pass != emp.e_password)
-    {
-        const error = new Error("Wrong credentials");
-        error.statusCode = 401;
-        throw error;
-    }
-
-    const token = jwt.encode({ id: emp._id }, empConfig.secret);
-    res.send({ token });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-let isValid = async (req, res, next) => {
-  try {
-    res.send("Authorized");
-  } catch (error) {
-    next(error);
-  }
-};
-let addEmployee = async (req, res, next) => {
-  try {
-    validationHandler(req);
-    let newEmp = new employee();
-
-    newEmp.firstName = req.body.firstName;
-    newEmp.lastName = req.body.lastName;
-    newEmp.email_address = req.body.email_address;
-
-    newEmp.e_password = "1234";
-    newEmp.first_login = true;
-    await newEmp.save();
-    res.send({ message: "Success", newEmp });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-let deleteEmployee = async (req, res, next) => {
-  try {
-    let id = req.params.id;
-    let emp = await employee.findById(id);
-    if (emp == null) {
-      let error = new Error("Bad request");
-      error.statusCode = 400;
-      throw error;
-    }
-    await emp.delete();
-    res.send({ message: "deleted" });
-  } catch (err) {
-    next(err);
-  }
-};
-
-let editPassword = async (req, res) => {
+let signIn = async (req, response) => {
+  console.log(req.body);
+  let email_address = req.body.email;
+    let pass = req.body.password;
   
-  try {
-    let emp = req.user;
-    emp.e_password = req.body.e_password;
-    await emp.save();
-    res.send("success");
-  } catch (err) {
-    console.log(error);
+  let userInfo = await employee.findOne({ email_address: email_address, e_password: pass });
+
+  if (userInfo != null) {
+      console.log(`user ${email_address} has logged in`);
+      response.send("found")
   }
-};
+  else {
+      console.log(`user ${email_address} did not log in due to wrong username/password`);
+      response.send("not found");
+  }
+}
+
+let getEmployeeByEmail = (req,res) => {
+  let employeeEmail = req.params.email
+  console.log(employeeEmail);
+}
+
+let updateEmployee = async (request, response) => {
+  let employeeEmail = request.params.email
+  let employee1 = request.body;
+  let userInfo = await employee.findOneAndUpdate({email_address:employeeEmail},{e_password:employee1.newPass})
+  if (userInfo != null) {
+    
+    response.send("found")
+}
+else {
+    
+    response.send("not found");
+}
+}
+
+let sendProductRequest = async (request, response) => {
+  
+  let requestProduct = {
+     name: request.body.name,
+     action: "unresolved",
+     quantity: request.body.quantity }
+  
+  console.log(requestProduct)
+  let promoCode = new requestModel(requestProduct);
+  let requestInfo = await promoCode.save();
+  if (requestInfo != null) {
+    
+    response.send("found")
+}
+else {
+    
+    response.send("not found");
+}
+
+}
 
 module.exports = {
-  addEmployee,
-  deleteEmployee,
-  getAll,
-  editPassword,
+  
   signIn,
-  isValid,
+  getEmployeeByEmail,
+  updateEmployee,
+  sendProductRequest,
+
 };

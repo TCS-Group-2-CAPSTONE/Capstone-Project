@@ -1,16 +1,19 @@
-let mongoose = require("mongoose");
-mongoose.pluralize(null);
+const mongoose = require('mongoose');
 
-//productsRequested is an array of product objects
-let requestSchema = mongoose.Schema({
-    _id: {type: Number},
-    productsRequested: {type: [{
-        name: {type: String, required: true},
-        action: {type: String, required: true},
-        quantity: {type: Number}
-    }]}
+const requestSchema = new mongoose.Schema({
+	name: {
+		type: String,
+		required: true
+	},
+	action: {
+		type: String,
+		required: true
+	},
+	quantity: {
+		type: Number,
+		required: true
+	},
+	
 });
 
-let requestModel = mongoose.model("Request", requestSchema);
-
-module.exports = requestModel;
+module.exports = PromoCode = mongoose.model('Request', requestSchema);

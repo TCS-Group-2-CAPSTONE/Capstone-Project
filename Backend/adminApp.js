@@ -5,7 +5,7 @@ let bodyParser = require("body-parser");
 let adminRouter = require("./router/admin.router");
 let productRouter = require("./router/product.router");
 let requestRouter = require("./router/request.router");
-
+let employeeRouter = require("./router/employee.router"); //A
 let app = express();
 
 
@@ -13,9 +13,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 let url = "mongodb://localhost:27017/tcsmean";
+//let url ="mongodb+srv://Drive:458@capstone-project.blnzz.mongodb.net/Capstone?retryWrites=true&w=majority"
 mongoose.connect(url).then(result=>console.log("connected")).catch(err=>console.log(err));
 
 app.use("/admin", adminRouter);
+app.use("/employee",employeeRouter); //A
 
 app.use("/product", productRouter);
 
