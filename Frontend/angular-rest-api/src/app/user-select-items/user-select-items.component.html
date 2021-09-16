@@ -1,1 +1,76 @@
-<p>user-select-items works!</p>
+<div>
+    
+  
+    <!-- <table border="1">
+     <tr>
+         <th>Name</th>
+         <th>price</th>
+         <th>Quanitity</th>
+         <th>url</th>
+     </tr>
+     <tr *ngFor="let prdVar of productDetails">
+         <td>{{prdVar.name}}</td>
+         <td>{{prdVar.price}}</td>
+         <td>{{prdVar.quantity}}</td>
+         <td>{{prdVar.url}}</td>
+         <td><input type="button" value="Add" /></td>
+          <td><input type="button" value="Update" /></td>  -->
+        <!-- <td><input type="button" value="Delete" (click)="deleteRec(customer.cid)"/></td>
+        <td><input type="button" value="Update" (click)="updateAge(customer.cid,customer.age)"/></td>  -->
+     <!-- </tr>
+ </table> --> 
+ 
+ 
+ <div class="container fixed-top centerHorizontally">
+     <div *ngFor="let prdVar of productDetails">
+     <div class="p-2 bg-light border">
+         
+         <div class="row gy-5">
+            
+             <div class="col-12">
+                 <div class="p-3 border bg-light">
+                   <div class="thumbnail">
+                
+                     <h4>
+                         <label  for="lName" class="form-label">Name:</label>
+                        
+                          <label id="pnameLbl" for="pName" class="form-label">{{prdVar.name}}</label> 
+                     </h4>
+                     <h5>
+                         <label for="lPrice" class="form-label">Price:</label>
+                         <label id ="valPrice" for="pValue" class="form-label">${{prdVar.price}}</label>
+                     </h5>
+     
+                     <h5>
+                         <label for="lqty" class="form-label">Quantity:</label>
+                         <label id ="valQty" for="pqty" class="form-label">{{prdVar.quantity}}</label>
+                     </h5>
+     
+                     <div class="col">
+                         <img src='{{prdVar.url}}' style="width: 70px; height: 50px;">
+                       
+                         <hr/>
+                     </div>
+                   
+                         <input class="btn btn-primary" type="button" value="Add"  (click)="addData(prdVar.name, prdVar.price, prdVar.quantity, prdVar.url)">
+                   
+                     </div>
+                 </div>
+                 </div>  
+                 
+             </div> 
+             
+             </div>
+         </div>
+         
+     <!-- <div class="overflow-auto"> -->
+         <!-- <div class="container vertical-scrollable">  -->
+             <!-- <div class="col-sm-8">  -->
+             <!-- for loop of array -->
+             
+     </div>
+   
+   
+ </div>
+ 
+ 

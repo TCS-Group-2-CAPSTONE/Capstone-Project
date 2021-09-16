@@ -22,8 +22,39 @@ let signIn = async (request, response)=>{
     }else{
         response.send("Invalid ")
     }
-  
 
 }
 
-module.exports = {signIn,signUp};
+let updateUser = async (request, response)=>{
+    let user = request.body;
+    userModel.updateOne({userId:user.userId}, 
+    {firstName:user.firstName,
+        lastName:user.lastName,
+        email:user.email,
+        password:user.password,
+        dob:user.dob,
+        phoneNumber:user.phoneNumber,
+        Address:user.Address,
+    }, (error, result)=>{
+        if (result.modifiedCount == 1) {
+            response.send(`updated product successfully`);
+        }
+        else {
+            response.send(`did not update product `);
+        }
+    }) 
+}
+
+let retriveUserId = (request, response)=>{
+    let user = request.params.userId;
+    userModel.findById({userId:user.userId}, (error,result)=>{
+        if(error){
+            response.send(error)
+        }else{
+            response.json(result)
+            console.log(result);
+        }
+    })
+}
+
+module.exports = {signIn,signUp, updateUser, retriveUserId};

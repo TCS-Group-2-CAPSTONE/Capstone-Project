@@ -8,7 +8,7 @@ let userSchema = mongoose.Schema({
     email:{type:String, unique:true},
     password:{type:String},
     dob:{type:Date},
-    pNo:{type:Number},
+    phoneNumber:{type:Number},
     Address:{type:String},
     userId:{type:String, unique:true}
 });

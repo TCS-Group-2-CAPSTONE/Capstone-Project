@@ -42,4 +42,16 @@ let updateProduct = (request, response) => {
 
 }
 
-module.exports = {addProduct, deleteProduct, updateProduct};
+//add new module retriveProduct
+let retriveProduct = (request, response)=>{
+    productModel.find({}, (error,result)=>{
+        if(error){
+            response.send(error)
+        }else{
+            response.json(result)
+            console.log(result);
+        }
+    })
+}
+
+module.exports = {addProduct, deleteProduct, updateProduct, retriveProduct};

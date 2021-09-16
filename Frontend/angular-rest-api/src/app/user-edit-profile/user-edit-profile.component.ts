@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { UserSignInService } from '../user-sign-in.service';
 
 @Component({
   selector: 'app-user-edit-profile',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserEditProfileComponent implements OnInit {
 
-  constructor() { }
+  msg:string = '';
+  signUpRef = new FormGroup({
+    firstName:new FormControl(),
+    lastName:new FormControl(),
+    email:new FormControl(),
+    dob:new FormControl(),
+    phoneNumber:new FormControl(),
+    Address:new FormControl(),
+    userId:new FormControl(),
+    password:new FormControl()
+  });
+  constructor(public loginSer:UserSignInService) { }
 
   ngOnInit(): void {
+  }
+
+  updateUserDetails(){
+
   }
 
 }

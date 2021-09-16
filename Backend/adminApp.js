@@ -12,9 +12,11 @@ let app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-let url = "mongodb://localhost:27017/tcsmean";
-mongoose.connect(url).then(result=>console.log("connected")).catch(err=>console.log(err));
+// let url = "mongodb://localhost:27017/tcsmean";
+let url = "mongodb://localhost:27017/groceryCap";
 
+mongoose.connect(url).then(result=>console.log("connected")).catch(err=>console.log(err));
+   
 app.use("/admin", adminRouter);
 
 app.use("/product", productRouter);

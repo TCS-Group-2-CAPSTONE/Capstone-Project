@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserSignInService } from '../user-sign-in.service';
 
 
 @Component({
@@ -10,24 +11,38 @@ import { Router } from '@angular/router';
 })
 export class UserSignInComponent implements OnInit {
   msg:string = '';
+  lockMsg?:string; 
+  counter:number = 0; //counter variable for invalid login attempts
+  checkUserLogin:boolean = false;
+
   loginRef = new FormGroup({
-    username:new FormControl(),
+    userId:new FormControl(),
     password:new FormControl()
   });
-  constructor(public router:Router) { }
+  constructor(public loginSer: UserSignInService, public router:Router) { }
 
   ngOnInit(): void {
   }
 
   checkUser(){
     let user = this.loginRef.value;
-
-    if(user.username == "Inan" && user.password == '1234'){
-      this.router.navigate(['user-dashboard', user.username]);
-    }
-    else{
-      this.msg = 'Invalid credentials. Please try again.'
-    }
-  }
-
+    this.loginSer.checkLoginDetails(user).subscribe(result=>
+    {
+        if (result=="Success"){
+          this.router.navigate(['user-dashboard', user.userId]);
+        }
+      else{
+        this.msg = 'Invalid credentials. Please try again.'
+        this.counter= this.counter + 1;
+        if (this.counter == 3){
+          //console.log("Account locked")
+          this.lockMsg = "Account Locked due to multiple attempts"
+          this.checkUserLogin = true;
+        }
+      }
+    }, 
+    error=>console.log(error)
+    )
+    this.loginRef.reset();
+}
 }
