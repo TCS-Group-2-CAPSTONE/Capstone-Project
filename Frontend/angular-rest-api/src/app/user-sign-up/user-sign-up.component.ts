@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserSignInService } from '../user-sign-in.service';
 
 
 @Component({
@@ -11,28 +12,28 @@ import { Router } from '@angular/router';
 export class UserSignUpComponent implements OnInit {
   msg:string = '';
   signUpRef = new FormGroup({
-    fname:new FormControl(),
-    lname:new FormControl(),
+    firstName:new FormControl(),
+    lastName:new FormControl(),
     email:new FormControl(),
     dob:new FormControl(),
     phoneNumber:new FormControl(),
-    address:new FormControl(),
-    username:new FormControl(),
+    Address:new FormControl(),
+    userId:new FormControl(),
     password:new FormControl()
   });
 
-  constructor() { }
+  constructor(public loginSer:UserSignInService) { }
 
   ngOnInit(): void {
   }
 
   addUser(){
     let newUser = this.signUpRef.value;
+    this.loginSer.loginAccountCreate(newUser).
+    subscribe(result=>this.msg=result,error=>console.log(error));
 
     this.signUpRef.reset();
 
-
-    this.msg = 'New Account Created Successfully!'
   }
 
 }
