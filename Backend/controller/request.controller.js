@@ -1,5 +1,6 @@
 let requestModel = require("../model/request.model");
 
+//function to pull all requests from request table
 let viewRequests = (request, response) => {
     requestModel.find({resolved:false}, (error, result) =>{
         if (!error) {
@@ -11,6 +12,7 @@ let viewRequests = (request, response) => {
     })
 }
 
+//function to add a request to the request table
 let addRequest = (request, response) => {
     requestModel.insertMany(request.body, (error, result) => {
         if (!error) {
@@ -22,6 +24,7 @@ let addRequest = (request, response) => {
     })
 }
 
+//function to delete a request from the request table. called by admin
 let deleteRequest = (request, response) => {
     let requestId = request.params.requestId;
     requestModel.deleteOne({_id: requestId}, (error, result) => {

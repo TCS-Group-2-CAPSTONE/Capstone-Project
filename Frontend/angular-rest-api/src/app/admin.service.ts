@@ -12,6 +12,8 @@ export class AdminService {
 
   constructor(public http:HttpClient) { }
 
+  //BELOW CONTAINS ALL ADMIN SERVICE FUNCTIONS
+
   checkLoginDetails(login:Admin): Observable<any> {
     return this.http.post("http://localhost:9090/admin/adminLogin", login, {responseType: "text"});
   }

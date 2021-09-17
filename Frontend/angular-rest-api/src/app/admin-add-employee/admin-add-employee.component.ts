@@ -21,6 +21,8 @@ export class AdminAddEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  //function to add employee when button is clicked
   addEmployee() {
     let employee = this.employeeRef.value;
     this.adminSer.addEmployee(employee).subscribe(result => {

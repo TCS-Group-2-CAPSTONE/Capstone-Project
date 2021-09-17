@@ -1,6 +1,7 @@
 const { response } = require("express");
 let userModel = require("../model/user.model");
 
+//function to let user sign up
 let signUp = async (request, response)=>{
 
     let user = request.body;  //recieve the data from the post method
@@ -14,6 +15,7 @@ let signUp = async (request, response)=>{
   
 }
 
+//function to let user sign in
 let signIn = async (request, response)=>{
     let user = request.body;  //recieve the data from the post method
     let userInfo = await userModel.findOne({userId:user.userId, password:user.password});
@@ -25,6 +27,7 @@ let signIn = async (request, response)=>{
 
 }
 
+//function to update user info. all fields are optional
 let updateUser = async (request, response)=>{
     let user = request.body;
     userModel.updateOne({userId:user.userId}, 
@@ -45,6 +48,7 @@ let updateUser = async (request, response)=>{
     }) 
 }
 
+//function to retrieve a user's Id
 let retriveUserId = (request, response)=>{
     let user = request.params.userId;
     userModel.findById({userId:user.userId}, (error,result)=>{

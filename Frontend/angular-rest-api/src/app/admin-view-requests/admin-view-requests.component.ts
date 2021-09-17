@@ -17,7 +17,7 @@ export class AdminViewRequestsComponent implements OnInit {
   }
 
 
-
+  //function to pull all requests from request table and display in a table
   getRequests() {
     this.adminSer.getRequests().subscribe(result=>{
       this.requests = JSON.parse(result);
@@ -25,6 +25,7 @@ export class AdminViewRequestsComponent implements OnInit {
     })
   }
 
+  //function to delete request from request table and then refresh the user's visual table
   deleteRequest(requestId:any) {
     this.adminSer.deleteRequest(requestId).subscribe(result=> {
       console.log(result);

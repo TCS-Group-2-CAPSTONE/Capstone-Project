@@ -1,6 +1,8 @@
 let adminModel = require("../model/admin.model");
 let employeeModel = require("../model/employee.model");
 
+
+//function to check valid admins on the admin table
 let signIn = async (request, response) => {
     let loginInfo = request.body;
 
@@ -16,6 +18,7 @@ let signIn = async (request, response) => {
     }
 }
 
+//function to add employee in to the employee table
 let addEmployee = (request, response) => {
     let employee = request.body;
     employeeModel.insertMany(employee, (error, result) => {
@@ -28,6 +31,7 @@ let addEmployee = (request, response) => {
     })
 }
 
+//function to remove employee from the employee table
 let deleteEmployee = (request, response) => {
     let employeeEmail = request.params.employeeEmail;
     
@@ -43,6 +47,5 @@ let deleteEmployee = (request, response) => {
 
 
 
-
-
+//export the functions
 module.exports = { signIn, addEmployee, deleteEmployee}

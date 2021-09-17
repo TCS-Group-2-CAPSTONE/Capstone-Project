@@ -1,6 +1,7 @@
 let mongoose = require("mongoose");
 mongoose.pluralize(null);
 
+//cart scheme contains an array of products as a field.
 let userCartSchema = mongoose.Schema({
     _id: {type: Number},
     userId: {type: Number},

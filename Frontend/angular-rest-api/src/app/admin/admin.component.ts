@@ -19,6 +19,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //function to check admin login credentials. if the result returns found, then admin exists
   checkAdmin(){
     let login = this.loginRef.value;
 

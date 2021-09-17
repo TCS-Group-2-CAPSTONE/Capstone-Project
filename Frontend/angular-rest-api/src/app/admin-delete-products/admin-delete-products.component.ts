@@ -20,6 +20,7 @@ export class AdminDeleteProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //function to delete a product based on product name
   deleteProduct() {
     let product = this.productRef.value;
     this.adminSer.deleteProduct(product).subscribe(result=>{

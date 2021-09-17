@@ -20,6 +20,7 @@ export class AdminDeleteEmployeeComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  //function to delete an employee based on their email address
   deleteEmployee() {
     let employee = this.employeeRef.value; 
     console.log(employee);

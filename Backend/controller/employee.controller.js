@@ -1,6 +1,7 @@
 const employee = require("../model/employee.model");
 const requestModel = require("../model/request.model");
 
+//function to check valid employee login details
 let signIn = async (req, response) => {
   console.log(req.body);
   let email_address = req.body.email;
@@ -18,11 +19,13 @@ let signIn = async (req, response) => {
   }
 }
 
+//function to get an employee document from table based on email
 let getEmployeeByEmail = (req,res) => {
   let employeeEmail = req.params.email
   console.log(employeeEmail);
 }
 
+//function to update employee using url params
 let updateEmployee = async (request, response) => {
   let employeeEmail = request.params.email
   let employee1 = request.body;

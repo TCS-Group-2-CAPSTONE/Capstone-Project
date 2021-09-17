@@ -1,6 +1,6 @@
 let productModel = require("../model/product.model");
 
-
+//add product to the product table
 let addProduct = (request, response) => {
     let product = request.body;
     console.log(product);
@@ -14,6 +14,7 @@ let addProduct = (request, response) => {
     });
 }
 
+//delete product on product table based on url params
 let deleteProduct = (request, response) => {
     let productName= request.params.productName;
     productModel.deleteOne({name: productName}, (error, result)=> {
@@ -26,6 +27,7 @@ let deleteProduct = (request, response) => {
     });
 }
 
+//function to update a product. all fields are optional
 let updateProduct = (request, response) => {
     let product = request.body;
     productModel.updateOne({name: product.name}, {$set: {price: product.price, quantity: product.quantity, url: product.url}},

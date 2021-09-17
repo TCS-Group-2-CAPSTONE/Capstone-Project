@@ -20,6 +20,7 @@ export class AdminAddProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //function to add a product when button is clicked. all fields must be filled
   addProduct(){
     let product = this.productRef.value;
 

@@ -22,6 +22,8 @@ export class AdminUpdateProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //update product based on product name. all fields are filtered to 
+  //make sure they are not null and then sent in to update
   updateProduct() {
     let product = this.productRef.value;
     let filteredProduct:any = {};
