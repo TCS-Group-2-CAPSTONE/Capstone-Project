@@ -10,23 +10,20 @@ import { UserSignInService } from '../user-sign-in.service';
 export class UserEditProfileComponent implements OnInit {
 
   msg:string = '';
-  signUpRef = new FormGroup({
-    firstName:new FormControl(),
-    lastName:new FormControl(),
+  userRef = new FormGroup({
     email:new FormControl(),
-    dob:new FormControl(),
     phoneNumber:new FormControl(),
-    Address:new FormControl(),
-    userId:new FormControl(),
-    password:new FormControl()
+    address:new FormControl(),
+    oldPass:new FormControl(),
+    newPass:new FormControl()
   });
   constructor(public loginSer:UserSignInService) { }
 
   ngOnInit(): void {
   }
 
-  updateUserDetails(){
-
+  updateProfile(){
+    let newInfo = this.userRef.value;
   }
 
 }

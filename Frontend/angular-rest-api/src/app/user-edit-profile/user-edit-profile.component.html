@@ -1,69 +1,52 @@
+<div >
 
-
-
-<div class="container fixed-top centerHorizontally">
-    <p>user-edit-profile works!</p>
-    <!-- <div class="center"> -->
-
-        <div class="border box">
-            
-            <h2 class="centerText">Update User Sign Up</h2>
-            <br>
-            <br>
-        <form [formGroup]="signUpRef" (ngSubmit)="updateUserDetails()" ngNativeValidate>
-            <div class="row mb-3">
-              <label class="col-sm-4 col-form-label">First Name:</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" formControlName="firstName" value="">
-              </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Last Name:</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" formControlName="lastName">
-                </div>
-              </div>
-            <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Email:</label>
-                <div class="col-sm-8">
-                  <input type="email" class="form-control" formControlName="email">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Date of Birth:</label>
-                <div class="col-sm-8">
-                  <input type="date" class="form-control" formControlName="dob">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Phone Number:</label>
-                <div class="col-sm-8">
-                  <input type="number" class="form-control" formControlName="phoneNumber">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Address:</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" formControlName="Address">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">User Id:</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" formControlName="userId" readonly>
-                </div>
-            </div>
-            <div class="row mb-3">
-              <label class="col-sm-4 col-form-label">Password:</label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control" formControlName="password">
-              </div>
-            </div>
-            <button type="submit" class="btn user">Save</button>
-            <button class="btn user right" [routerLink]="['/user-sign-in']">Sign In</button>
-          </form>
-          <br>
-          {{msg}}
+  <div >
+      <h2>Edit your profile</h2>
+      <br>
+      <br>
+  <form [formGroup]="userRef" (ngSubmit)="updateProfile()">
+      <div class="row mb-3">
+        <label class="col-sm-4 col-form-label">Address:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="address" placeholder="User's old address">
         </div>
-    <!-- </div> -->
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-4 col-form-label">Phone Number:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="phoneNumber" placeholder="User's old phone number">
+        </div>
+      </div>
+      <div class="row mb-3">
+          <label class="col-sm-4 col-form-label">Email:</label>
+          <div class="col-sm-8">
+            <input type="email" class="form-control" formControlName="email" placeholder="User's old email">
+          </div>
+      </div>
+      <hr>
+      <h2>Update password</h2>
+      
+      <div class="row mb-3">
+          <label class="col-sm-4 col-form-label">Old Password:</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" formControlName="oldPass">
+          </div>
+      </div>
+      <div class="row mb-3">
+          <label class="col-sm-4 col-form-label">New Password:</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" formControlName="newPass">
+          </div>
+      </div>
+
+      <div class="row mb-3">
+          <label class="col-sm-4 col-form-label">Re-enter New Password:</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" formControlName="newPass">
+          </div>
+      </div>
+      <button type="submit" class="btn user">Update Info</button>
+    </form>
+    <br>
+  </div>
 </div>
