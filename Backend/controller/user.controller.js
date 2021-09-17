@@ -37,10 +37,10 @@ let updateUser = async (request, response)=>{
         Address:user.Address,
     }, (error, result)=>{
         if (result.modifiedCount == 1) {
-            response.send(`updated product successfully`);
+            response.send(`updated user successfully`);
         }
         else {
-            response.send(`did not update product `);
+            response.send(`did not update user `);
         }
     }) 
 }
