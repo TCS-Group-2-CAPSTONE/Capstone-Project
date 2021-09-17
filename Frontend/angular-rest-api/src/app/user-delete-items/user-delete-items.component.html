@@ -1,1 +1,42 @@
-<p>user-delete-items works!</p>
+
+ <div class="container fixed-top centerHorizontally">
+    <div *ngFor="let prdVar of productDetails">
+    <div class="p-2 bg-light border">
+        
+        <div class="row gy-5">
+           
+            <div class="col-12">
+                <div class="p-3 border bg-light">
+                  <div class="thumbnail">
+               
+                    <h4>
+                        <label  for="lName" class="form-label">Name:</label>
+                       
+                         <label id="pnameLbl" for="pName" class="form-label">{{prdVar.name}}</label> 
+                    </h4>
+                    <h5>
+                        <label for="lPrice" class="form-label">Price:</label>
+                        <label id ="valPrice" for="pValue" class="form-label">${{prdVar.price}}</label>
+                    </h5>
+    
+                    <h5>
+                        <label for="lqty" class="form-label">Quantity:</label>
+                        <label id ="valQty" for="pqty" class="form-label">{{prdVar.quantity}}</label>
+                    </h5>
+    
+                    <div class="col">
+                        <img src='{{prdVar.url}}' style="width: 70px; height: 50px;">
+                      
+                        <hr/>
+                    </div>
+                    <!-- <button >Delete</button> -->
+                        <input class="btn btn-primary" type="button" value="Delete">  <!-- (click) = "deleteRequest(request._id)"> -->
+                  
+                    </div>
+                </div>
+                </div>  
+                
+            </div> 
+            
+            </div>
+        </div>

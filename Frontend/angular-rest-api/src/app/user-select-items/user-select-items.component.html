@@ -1,31 +1,31 @@
 <div class="d-flex justify-content-evenly">
-     <div *ngFor="let prdVar of productDetails">
-    <div class="card" style="width: 15rem;" >
-        <img src='{{prdVar.url}}' class="card-img-top itemsImg" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{prdVar.name}}</h5>
-          <div ><span class="card-text">${{prdVar.price}}</span>
+  <div *ngFor="let prdVar of productDetails">
+ <div class="card" style="width: 15rem;" >
+     <img src='{{prdVar.url}}' class="card-img-top itemsImg" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">{{prdVar.name}}</h5>
+       <div ><span class="card-text">${{prdVar.price}}</span>
 
-            <select class="right" id={{prdVar.name}}>
-                <!-- <option selected>Qty:</option> -->
-                <option *ngFor='let in of counter(prdVar.quantity) ;let i = index' value={{i+1}}>{{i+1}}</option>
-              </select>
+         <select class="right" id={{prdVar.name}}>
+             <!-- <option selected>Qty:</option> -->
+             <option *ngFor='let in of counter(prdVar.quantity) ;let i = index' value={{i+1}}>{{i+1}}</option>
+           </select>
 
-          </div>
-          <br>
-          <button class="btn user" (click)="addData(prdVar.name, prdVar.price, prdVar.url)">Add to Cart</button>
-        </div>
-      </div>
-    </div>
+       </div>
+      
+       <br>
+       <button class="btn user" (click)="addData( prdVar.name, prdVar.price, prdVar.url)">Add to Cart</button>
+     </div>
+   </div>
+ </div>
 </div>
 
 
 
- 
-         
+
+      
 
 
-   
-   
- 
- 
+
+
+

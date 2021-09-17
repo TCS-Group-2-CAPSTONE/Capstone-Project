@@ -9,6 +9,8 @@ let productRouter = require("./router/product.router");
 let adminRouter = require("./router/admin.router");
 let requestRouter = require("./router/request.router");
 let employeeRouter = require("./router/employee.router"); //A
+let cartRouter = require("./router/cart.router")
+let ticketRouter = require("./router/raiseTicket.router")
 
 // create the reference of express 
 let app = express();
@@ -18,8 +20,8 @@ app.use(cors());
 app.use(bodyParser.json())
 
 //url database   
-//let url = "mongodb://localhost:27017/groceryCap"  
-let url = "mongodb://localhost:27017/tcsmean"; 
+let url = "mongodb://localhost:27017/groceryCap"  
+// let url = "mongodb://localhost:27017/tcsmean"; 
 
 // connect the database 
 mongoose.connect(url).then(res=>console.log("connected")).catch(error=>console.log(error));
@@ -40,6 +42,10 @@ mongoose.connect(url).then(res=>console.log("connected")).catch(error=>console.l
   
 app.use("/api/user",userRouter);
 
+app.use("/addCart",cartRouter);
+
+app.use("/raiseTicket",ticketRouter);
+
 app.use("/product",productRouter);
 
 app.use("/admin", adminRouter);
@@ -49,7 +55,8 @@ app.use("/request", requestRouter);
 app.use("/employee",employeeRouter); //A
 
 // app.use("/api/order",routerOrder);
-// app.use("/api/login",routerLogin);
+
 app.listen(9090,()=>console.log("Server running on port number 9090"))
 
 
+         
