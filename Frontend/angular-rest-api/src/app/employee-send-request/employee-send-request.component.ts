@@ -11,8 +11,9 @@ export class EmployeeSendRequestComponent implements OnInit {
   msg:string = '';
   requestRef = new FormGroup({
     name:new FormControl(),
-    action:new FormControl(),
-    quantity:new FormControl()
+    employeeEmail: new FormControl(),
+    resolved:new FormControl(),
+    action:new FormControl()
   });
   constructor(public employeeSer:EmployeeService) { }
 

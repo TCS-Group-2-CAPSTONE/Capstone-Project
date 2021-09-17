@@ -36,4 +36,12 @@ export class AdminService {
     return this.http.delete("http://localhost:9090/admin/deleteEmployee/" + employee.email_address, {responseType: "text"});
   }
 
+  getRequests(): Observable<any> {
+    return this.http.get("http://localhost:9090/request/viewRequests", {responseType: "text"});
+  }
+
+  deleteRequest(employeeId:any): Observable<any> {
+    return this.http.delete("http://localhost:9090/request/deleteRequest/" + employeeId, {responseType: "text"});
+  } 
+
 }

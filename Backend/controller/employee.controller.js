@@ -41,8 +41,10 @@ let sendProductRequest = async (request, response) => {
   
   let requestProduct = {
      name: request.body.name,
-     action: "unresolved",
-     quantity: request.body.quantity }
+     employeeEmail: request.body.employeeEmail,
+     resolved: "false",
+     action: request.body.action
+  }
   
   console.log(requestProduct)
   let promoCode = new requestModel(requestProduct);

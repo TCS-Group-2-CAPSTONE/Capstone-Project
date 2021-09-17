@@ -5,14 +5,19 @@ const requestSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	employeeEmail: {
+		type: String,
+		required: true
+	},
+	resolved: {
+		type: Boolean,
+		required: true
+	},
 	action: {
 		type: String,
 		required: true
 	},
-	quantity: {
-		type: Number,
-		required: true
-	},
+
 	
 });
 

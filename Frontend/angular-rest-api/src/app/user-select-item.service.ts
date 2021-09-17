@@ -15,7 +15,7 @@ export class UserSelectItemService {
   // }
 
   retrieveAllProductInfo():Observable<UserSelctItem[]>{
-    return this.http.get<UserSelctItem[]>("http://localhost:9090/api/product/retriveProduct");
+    return this.http.get<UserSelctItem[]>("http://localhost:9090/product/retriveProduct");
   }
 }
 

@@ -1,7 +1,7 @@
 let requestModel = require("../model/request.model");
 
 let viewRequests = (request, response) => {
-    requestModel.find({}, (error, result) =>{
+    requestModel.find({resolved:false}, (error, result) =>{
         if (!error) {
             response.send(result);
         }
@@ -22,4 +22,16 @@ let addRequest = (request, response) => {
     })
 }
 
-module.exports = {viewRequests, addRequest}
+let deleteRequest = (request, response) => {
+    let requestId = request.params.requestId;
+    requestModel.deleteOne({_id: requestId}, (error, result) => {
+        if (result.deletedCount > 0 ) {
+            response.send("deleted the request");
+        }
+        else {
+            response.send("did not delete the request");
+        }
+    })
+}
+
+module.exports = {viewRequests, addRequest, deleteRequest}
