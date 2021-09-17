@@ -8,6 +8,10 @@ import { UserSelectItemService } from '../user-select-item.service';
   styleUrls: ['./user-select-items.component.css']
 })
 export class UserSelectItemsComponent implements OnInit {
+  // small function used in html template to generate correct amount of item quantity available 
+  counter(i: number) {
+    return new Array(i);
+}
 
   //array for the products
   productDetails:Array<UserSelctItem>=[];
@@ -27,9 +31,15 @@ export class UserSelectItemsComponent implements OnInit {
     }, error=>console.log(error));
   }
   //To add to cart
-  addData(name:any, price:any, quantity:any, url:any){
-    this.cartArr.push(name,price,quantity,url);
-    console.log(this.cartArr);
+  addData(name:any, price:any, url:any){
+    let element = (document.getElementById(name)) as HTMLSelectElement;
+    let sel = element.selectedIndex
+    let option = element.options[sel]
+    let quantity = option.value
+    console.log(quantity)
+    // this.cartArr.push(name,price,quantity,url);
+    // console.log(this.cartArr);
+
   }
 
 }

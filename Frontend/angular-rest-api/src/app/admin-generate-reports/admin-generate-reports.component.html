@@ -1,1 +1,30 @@
-<p>admin-generate-reports works!</p>
+<div>
+
+    <div>
+        <h2 class="centerText">Generate Reports</h2>
+        <br>
+        <br>
+        <div class="d-flex justify-content-evenly">
+            <button class="btn admin" (click) = "generateDailyReports()">Daily Reports</button>
+            <button class="btn admin" (click) = "generateWeeklyReports()">Weekly Reports</button>
+            <button class="btn admin" (click) = "generateMonthlyReports()">Monthly Reports</button>
+        </div>
+        <br>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Date of Purchase</th>
+                    <th>Cart Total</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+        </table>
+        <br>
+    </div>
+</div>

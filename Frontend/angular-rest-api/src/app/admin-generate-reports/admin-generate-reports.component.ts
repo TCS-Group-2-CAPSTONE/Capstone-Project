@@ -11,5 +11,17 @@ export class AdminGenerateReportsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  generateDailyReports(){
+
+  }
+
+  generateWeeklyReports(){
+
+  }
+
+  generateMonthlyReports(){
+
+  }
+
 
 }
