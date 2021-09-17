@@ -1,7 +1,9 @@
+// load the module 
 const mongoose = require('mongoose');
 
 let schema = mongoose.Schema;
 
+// create the schema 
 let employee = new schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
@@ -10,4 +12,5 @@ let employee = new schema({
     first_login:{type: Boolean, default: true}
 });
 
+// we can import using require in anothe file 
 module.exports = mongoose.model('Employee',employee);
